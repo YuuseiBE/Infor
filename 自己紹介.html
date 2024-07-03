@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自己紹介 - Yuusei</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* 背景画像のURLを指定 */
+    background-size: cover; /* 背景画像をカバーできるサイズに調整 */
+    background-position: center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 背景画像の繰り返しを無効化 */
+  }
+  .header {
+    background-color: #333; /* ヘッダーの背景色 */
+    color: #fff; /* ヘッダーのテキスト色 */
+    padding: 10px;
+    text-align: right;
+  }
+  .header a {
+    color: #fff; /* リンクの色 */
+    text-decoration: none; /* 下線を消す */
+    margin-left: 10px; /* ボタン間の余白 */
+    padding: 8px 12px; /* ボタンの内側の余白 */
+    border: 1px solid #fff; /* ボタンの枠線 */
+    border-radius: 4px; /* ボタンの角の丸み */
+  }
+  .header a:hover {
+    background-color: #555; /* ホバー時の背景色 */
+  }
+
+  .form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* 最初は非表示 */
+  }
+  .form-container h2 {
+    text-align: center;
+  }
+  .form-container input[type="text"],
+  .form-container input[type="password"],
+  .form-container input[type="email"],
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .form-container button,
+  .header button {
+    width: auto;
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .form-container button:hover,
+  .header button:hover {
+    background-color: #555;
+  }
+
+  /* Discordマークのスタイル */
+  .discord-mark {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 24px; /* Discordマークの幅 */
+    height: 24px; /* Discordマークの高さ */
+  }
+
+  /* 左上に表示するタイトルのスタイル */
+  .site-title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+  <div class="site-title">自己紹介 - Yuusei
+  </div>
+
+  <header class="header">
+    <a href="#">ログイン</a>
+    <a href="#">サインアップ</a>
+    <a href="#" id="email-link">メールを送信</a>
+    <button onclick="downloadDiscordInstaller()">Discordをダウンロード</button>
+  </header>
+  
+  <div class="form-container" id="login-form">
+    <h2>ログイン</h2>
+    <form>
+      <input type="text" placeholder="ユーザー名" required>
+      <input type="password" placeholder="パスワード" required>
+      <button type="submit">ログイン</button>
+    </form>
+  </div>
+
+  <div class="form-container" id="signup-form">
+    <h2>サインアップ</h2>
+    <form>
+      <input type="text" placeholder="ユーザー名" required>
+      <input type="password" placeholder="パスワード" required>
+      <button type="submit">サインアップ</button>
+    </form>
+  </div>
+
+  <div class="form-container" id="email-form" style="display: none;">
+    <h2>メールを送信する</h2>
+    <form id="email-send-form">
+      <input type="text" placeholder="お名前" id="name" required>
+      <input type="email" placeholder="メールアドレス" id="email" required>
+      <textarea placeholder="メッセージ内容" id="message" rows="5" required></textarea>
+      <button type="submit">送信</button>
+    </form>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <h2>自己紹介</h2>
+    <p>こんにちは！私は[Yuusei]です。ここでは私のことについて紹介します。</p>
+
+
+    <h3>スキル</h3>
+    <ul>
+      <li>プログラミング言語: [例: Python, JavaScript, etc.]</li>
+      <li>ウェブ開発: [例: HTML, CSS, React, etc.]</li>
+      <li>その他スキル: [例: デザイン, プロジェクト管理, etc.]</li>
+    </ul>
+
+    <h3>趣味・興味</h3>
+    <p>私は[Programming]が好きで、時間があるときはPythonで楽しんでいます。</p>
+
+    <h3>連絡先</h3>
+    <p>何か質問があれば、以下の方法でお気軽にご連絡ください。</p>
+    <ul>
+      <li>Email: ospbtk@gmail.com</li>
+      <li>Discord: [Yuusei0776]</li>
+    </ul>
+  </div>
+
+  <script>
+    // ログイン・サインアップの切り替え
+    document.querySelector('.header a:nth-child(1)').addEventListener('click', function() {
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('email-form').style.display = 'none';
+    });
+    document.querySelector('.header a:nth-child(2)').addEventListener('click', function() {
+      document.getElementById('signup-form').style.display = 'block';
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('email-form').style.display = 'none';
+    });
+
+    // メールフォームの表示切り替え
+    document.getElementById('email-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('email-form').style.display = 'block';
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('signup-form').style.display = 'none';
+    });
+
+    // Discordのインストーラーをダウンロード
+    function downloadDiscordInstaller() {
+      window.open("https://discord.com/api/download?platform=win", "_blank");
+    }
+
+    // メール送信成功時のアラート
+    document.getElementById('email-send-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // この部分に実際のメール送信処理を追加する必要があります（サーバーサイドで行います）。
+      alert('メールを送信しました！');
+    });
+  </script>
+</body>
+</html>
